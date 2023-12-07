@@ -234,6 +234,12 @@
                 <div class="form-group">
                   <label for="promo_code">Promo Code :</label>
                   <input type="text" class="form-control" id="promo_code" name="promo_code">
+                </div>      <div class="form-group">
+                  <label for="discount_value">Discount value :</label>
+                  <input type="text" class="form-control" id="discount_value" name="discount_value">
+                </div>     <div class="form-group">
+                  <label for="valid_until">Valid until :</label>
+                  <input type="text" class="form-control" id="valid_until" name="valid_until">
                 </div>
 
                 <!-- Add other input fields for the remaining properties -->
@@ -288,6 +294,8 @@
       $('#user_id').val(data.user_id);
       $('#point').val(data.point);
       $('#promo_code').val(data.promo_code);
+      $('#discount_value').val(data.discount_value);
+      $('#valid_until').val(data.valid_until);
       // $('#name_en').val(data.name_en);
     },
     error: function (xhr, status, error) {
