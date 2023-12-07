@@ -239,7 +239,7 @@
                   <input type="text" class="form-control" id="discount_value" name="discount_value">
                 </div>     <div class="form-group">
                   <label for="valid_until">Valid until :</label>
-                  <input type="text" class="form-control" id="valid_until" name="valid_until">
+                  <input type="text" class="form-control" id="valid_until" name="valid_until" >
                 </div>
 
                 <!-- Add other input fields for the remaining properties -->
@@ -317,6 +317,8 @@
       const user_id = $('#user_id').val();
       const point = $('#point').val();
       const promo_code = $('#promo_code').val();
+      const discount_value = $('#discount_value').val();
+      const valid_until = $('#valid_until').val();
 
       const requestData = {
         id: id,
@@ -324,6 +326,8 @@
         user_id: user_id,
         point: point,
         promo_code: promo_code,
+        discount_value: discount_value,
+        valid_until: valid_until,
       };
 
       // Submit the form data using AJAX
