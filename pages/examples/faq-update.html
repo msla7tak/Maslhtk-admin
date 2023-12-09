@@ -237,22 +237,22 @@
                     <label for="answer_en">Answer:</label>
                     <input type="text" class="form-control" id="answer_en" name="answer_en">
                   </div>
-<!--                  <div class="form-group">-->
-<!--                    <label for="question_ar">Question AR:</label>-->
-<!--                    <input type="text" class="form-control" id="question_ar" name="question_ar">-->
-<!--                  </div>-->
-<!--                  <div class="form-group">-->
-<!--                    <label for="answer_ar">Answer AR:</label>-->
-<!--                    <input type="text" class="form-control" id="answer_ar" name="answer_ar">-->
-<!--                  </div>-->
-
                   <div class="form-group">
-                    <label for="status">Status :</label>
-                    <select class="form-control" id="status" name="status">
-                      <option value="0">Private</option>
-                      <option value="1">Public</option>
-                    </select>
+                    <label for="question_ar">Question En:</label>
+                    <input type="text" class="form-control" id="question_ar" name="question_ar">
                   </div>
+                  <div class="form-group">
+                    <label for="answer_ar">Answer En:</label>
+                    <input type="text" class="form-control" id="answer_ar" name="answer_ar">
+                  </div>
+
+<!--                  <div class="form-group">-->
+<!--                    <label for="status">Status :</label>-->
+<!--                    <select class="form-control" id="status" name="status">-->
+<!--                      <option value="0">Private</option>-->
+<!--                      <option value="1">Public</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
                   <!-- Add other input fields for the remaining properties -->
                 </form>
               </div>
@@ -318,24 +318,24 @@
 
         // Get values from the form
         const question_en = $('#question_en').val();
-        // const question_ar = $('#question_ar').val();
+        const question_ar = $('#question_ar').val();
         const answer_en = $('#answer_en').val();
-        // const answer_ar = $('#answer_ar').val();
-        const status = $('#status').val();
+        const answer_ar = $('#answer_ar').val();
+        // const status = $('#status').val();
         // Construct the form data
         const formData = new FormData();
         formData.append('question_en', question_en);
-        // formData.append('question_ar', question_ar);
+        formData.append('question_ar', question_ar);
         formData.append('answer_en', answer_en);
-        // formData.append('answer_ar', answer_ar);
+        formData.append('answer_ar', answer_ar);
         // formData.append('status', status);
         // formData.append('id', id);
 
         const jsonObject = {
           question_en: question_en,
-          // question_ar: question_ar,
+          question_ar: question_ar,
           answer_en: answer_en,
-          // answer_ar: answer_ar,
+          answer_ar: answer_ar,
           // status: status
         };
 
