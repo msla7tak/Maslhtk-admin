@@ -223,10 +223,10 @@
                     <label for="name">Name :</label>
                     <input type="text" class="form-control" id="name" name="name">
                   </div>
-<!--                  <div class="form-group">-->
-<!--                    <label for="name_en">Name EN:</label>-->
-<!--                    <input type="text" class="form-control" id="name_en" name="name_en">-->
-<!--                  </div>-->
+                  <div class="form-group">
+                    <label for="name_en">Name EN:</label>
+                    <input type="text" class="form-control" id="name_en" name="name_en">
+                  </div>
 <!--                  <div class="form-group">-->
 <!--                    <label for="image">Image:</label>-->
 <!--                    <input type="file" class="form-control" id="image" name="image">-->
@@ -299,9 +299,9 @@
 
         // Get values from the form
         const name = $('#name').val();
-        // const name_en = $('#name_en').val();
+        const name_en = $('#name_en').val();
         const imageInput = $('#image')[0];
-        const imageFile = imageInput.files[0];
+        // const imageFile = imageInput.files[0];
         // Construct the form data
         // const formData = new FormData();
         // formData.append('name', name);
@@ -309,7 +309,7 @@
         // formData.append('image', imageFile);
         const requestData = {
           name: name,
-          // name_en: name_en,
+          name_en: name_en,
           // other properties of the Category object
         };
 
