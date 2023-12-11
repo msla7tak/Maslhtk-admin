@@ -274,16 +274,17 @@
         const name = $('#name').val();
 
         // Construct the form data
-        const formData = new FormData();
-        formData.append('name', name);
-
+        const requestData = {
+          name: name,
+          // other properties of the Category object
+        };
 
 
         // Submit the form data using AJAX
         $.ajax({
           url: 'https://masl7tak-production.up.railway.app/api/admin/car_brand',
           type: 'POST',
-          data: formData,
+          data: requestData,
           processData: false,
           contentType: false,
           headers: {
