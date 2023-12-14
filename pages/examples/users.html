@@ -532,7 +532,50 @@
                 contentType: 'application/json',
                 data: JSON.stringify(userDTO),
                 success: function (data) {
-                  console.log('Form submission success:', data);
+                  console.log('Form submission success:', data.id);
+                  const businessData = {
+                    "name": row.name,
+                    "email": row.email,
+                    "status": "active",
+                    "subscription_type": "junior",
+                    "description": row.description,
+                    "terms_conditions": row.terms_conditions,
+                    "category_id": row.category_id,
+                    "address": row.category_id,
+                    "locationLink": row.category_id,
+                    "phone_number": row.contact_number,
+                    "openTime": "08:00",
+                    "closureTime": "20:00",
+                    "working_days": "1-1-1-1-1-1-1",
+                    "region_id":  row.city,
+                    "city_id":  row.area,
+                    "logo": row.logo,
+
+                  };
+
+
+                  $.ajax({
+                    url: 'https://masl7tak-production.up.railway.app/api/admin/businesses_user/' + data.id, // Add a slash here
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(businessData),
+                    processData: false,
+                    headers: {
+                      Authorization: 'Bearer ' + localStorage.getItem('token')
+                    },
+                    success: function (data) {
+                      console.log('Form submission success:', data);
+                      // Clear the form
+                      $('form').trigger('reset');
+                      // Show a pop-up message
+                      alert('Form submitted successfully!');
+                    },
+                    error: function (xhr, status, error) {
+                      console.error('Form submission error:', error);
+                      // Handle error response
+                    }
+                  });
+
                 },
                 error: function (xhr, status, error) {
                   console.error('Form submission error:', error);
@@ -540,6 +583,10 @@
                   // Handle error response
                 }
               });
+
+
+
+
             });
 
             // Optionally, clear the form or perform other actions after all API calls are made
