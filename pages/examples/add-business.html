@@ -354,6 +354,22 @@
 
   // Make an initial request to populate regions and cities
 
+  $.ajax({
+    url: 'https://masl7tak-production.up.railway.app/api/public/region/' +  $('#region').val(),
+    method: 'GET',
+    success: function (data) {
+      $city.empty();
+      $.each(data.city, function (index, city) {
+        $city.append($('<option>', {
+          value: city.id,
+          text: city.name_en
+        }));
+      });
+    },
+    error: function () {
+      // Handle errors if necessary
+    }
+  });
 
   // Add event listener to the region select element
 
@@ -374,7 +390,7 @@
       // Handle errors if necessary
     }
   });
-  $('#city').click(function (e) {
+  $('#region').click(function (e) {
     const selectedRegionId = $('#region').val();
 
     populateCities(selectedRegionId);
