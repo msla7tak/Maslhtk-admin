@@ -338,6 +338,7 @@
       url: 'https://masl7tak-production.up.railway.app/api/public/region/' + regionId,
       method: 'GET',
       success: function (data) {
+        $city.empty();
         $.each(data.city, function (index, city) {
           $city.append($('<option>', {
             value: city.id,
