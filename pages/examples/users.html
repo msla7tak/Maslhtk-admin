@@ -200,7 +200,7 @@
           <!-- start Api git -->
           <div class="container-fluid" >
             <div class="row mb-2">
-              <div class=" col-sm-6">
+              <div class=" col-sm-6" style="margin-left:3%">
                 <div class="row">
                   <div class="col-sm-6">
                     <input type="file" id="fileInput" class="form-control">
@@ -489,40 +489,68 @@
       });
 
     });
+    $(document).ready(function () {
+      $('form').submit(function (event) {
+        event.preventDefault();
 
-    function handleFile() {
-      const fileInput = document.getElementById('fileInput');
-      const file = fileInput.files[0];
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
 
-      if (file) {
-        const reader = new FileReader();
+        if (file) {
+          const reader = new FileReader();
 
-        reader.onload = function (e) {
-          const data = new Uint8Array(e.target.result);
-          const workbook = XLSX.read(data, { type: 'array' });
+          reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
 
-          // Assuming you are reading the first sheet
-          const sheetName = workbook.SheetNames[0];
-          const sheet = workbook.Sheets[sheetName];
+            // Assuming you are reading the first sheet
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
 
-          // Convert sheet data to JSON
-          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: ['name', 'age'] });
+            // Convert sheet data to JSON
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: ['name', 'email', 'password', 'contact_number', 'car_model', 'car_brand'] });
 
-          // Separate "name" and "age" into lists
-          const nameList = [null, ...jsonData.map(row => row.name)];
-          const ageList = [null, ...jsonData.map(row => row.age)];
+            // Loop through each row in jsonData and make API calls
+            jsonData.forEach(row => {
+              const userDTO = {
+                "name": row.name,
+                "email": row.email,
+                "password": row.password,
+                "contact_number": row.contact_number,
+                "car_model": "1",
+                "car_brand":"1"
+              };
 
-          // Process nameList and ageList as needed
-          console.log('Names:', nameList);
-          console.log('Ages:', ageList);
+              // Submit the form data using AJAX
+              $.ajax({
+                url: 'https://masl7tak-production.up.railway.app/api/public/user/signup',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(userDTO),
+                success: function (data) {
+                  console.log('Form submission success:', data);
+                },
+                error: function (xhr, status, error) {
+                  console.error('Form submission error:', error);
+                  console.log('Response Text:', xhr.responseText);
+                  // Handle error response
+                }
+              });
+            });
 
-        };
+            // Optionally, clear the form or perform other actions after all API calls are made
+            // Clear the form
+            $('form').trigger('reset');
+            // Show a pop-up message
+            alert('Form submitted successfully!');
+          };
 
-        reader.readAsArrayBuffer(file);
-      } else {
-        alert('Please select an Excel file.');
-      }
-    }
+          reader.readAsArrayBuffer(file);
+        } else {
+          alert('Please select an Excel file.');
+        }
+      });
+    });
 
     function generatePagination() {
       var paginationList = $(".pagination-list");
