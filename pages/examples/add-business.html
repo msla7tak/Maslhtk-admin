@@ -375,7 +375,6 @@
   });
   $('#city').click(function (e) {
     const selectedRegionId = $('#region').val();
-    $city.empty();
 
     populateCities(selectedRegionId);
   });
@@ -384,7 +383,7 @@
     method: 'GET',
     success: function (data) {
       const $categorySelect = $('#category-select');
-      // $categorySelect.empty();
+      $categorySelect.empty();
       $.each(data, function (index, category) {
         $categorySelect.append($('<option>', {
           value: category.id,
