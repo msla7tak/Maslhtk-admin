@@ -242,10 +242,10 @@
                   <label for="terms_conditions">Terms And Conditions:</label>
                   <textarea class="form-control" id="terms_conditions" name="terms_conditions"></textarea>
                 </div>
-                <div class="form-group">
-                  <label for="working_days">Working Days :</label>
-                  <input type="text" id="working_days" class="form-control" name="working_days"></input>
-                </div>
+<!--                <div class="form-group">-->
+<!--                  <label for="working_days">Working Days :</label>-->
+<!--                  <input type="text" id="working_days" class="form-control" name="working_days"></input>-->
+<!--                </div>-->
 
                 <hr>
 
@@ -384,7 +384,7 @@
     method: 'GET',
     success: function (data) {
       const $categorySelect = $('#category-select');
-      $categorySelect.empty();
+      // $categorySelect.empty();
       $.each(data, function (index, category) {
         $categorySelect.append($('<option>', {
           value: category.id,
