@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maslhtk | Contacts</title>
+  <title>Maslhtk | ٌeadme</title>
   <script>
     if (!localStorage.getItem('token'))
       window.location.href = '/pages/examples/login-v2.html';
@@ -341,7 +341,7 @@
     // Rest of your existing code
     function confirmDelete(serviceId) {
       // Display a confirmation dialog to the user
-      const confirmDelete = confirm('Are you sure you want to delete this redame?');
+      const confirmDelete = confirm('Are you sure you want to delete this readme?');
 
       if (confirmDelete) {
         // User confirmed the deletion, perform the actual deletion logic
@@ -354,7 +354,7 @@
     function deleteCategory(serviceId) {
 
       $.ajax({
-        url: `https://masl7tak-production.up.railway.app/api/admin/readme_service/${serviceId}`,
+        url: `https://masl7tak-production.up.railway.app/api/user/readme_service/${serviceId}`,
         method: 'DELETE',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token')
