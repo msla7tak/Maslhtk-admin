@@ -200,7 +200,7 @@
           <!-- start Api git -->
           <div class="container-fluid" >
             <div class="row mb-2">
-              <div class=" col-sm-6" style="margin-left:3%">
+              <div class="col-sm-6">
                 <div class="row">
                   <div class="col-sm-6">
                     <input type="file" id="fileInput" class="form-control">
@@ -208,10 +208,11 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
-                    <button onclick="handleFile()" class="btn btn-primary">Import</button>
+                    <button id="importButton" class="btn btn-primary">Import</button>
                   </div>
                 </div>
               </div>
+
 
 
 
@@ -490,9 +491,7 @@
 
     });
     $(document).ready(function () {
-      $('form').submit(function (event) {
-        event.preventDefault();
-
+      $('#importButton').click(function () {
         const fileInput = document.getElementById('fileInput');
         const file = fileInput.files[0];
 
@@ -511,14 +510,14 @@
             const jsonData = XLSX.utils.sheet_to_json(sheet, { header: ['name', 'email', 'password', 'contact_number', 'car_model', 'car_brand'] });
 
             // Loop through each row in jsonData and make API calls
-            jsonData.forEach(row => {
+            jsonData.slice(1).forEach(row => {
               const userDTO = {
                 "name": row.name,
                 "email": row.email,
                 "password": row.password,
                 "contact_number": row.contact_number,
-                "car_model": "1",
-                "car_brand":"1"
+                "car_model": "1", // Assuming car_model is a string in your API
+                "car_brand": "1"  // Assuming car_brand is a string in your API
               };
 
               // Submit the form data using AJAX
@@ -540,7 +539,7 @@
 
             // Optionally, clear the form or perform other actions after all API calls are made
             // Clear the form
-            $('form').trigger('reset');
+            $('#fileInput').val(''); // Reset the file input
             // Show a pop-up message
             alert('Form submitted successfully!');
           };
@@ -551,7 +550,6 @@
         }
       });
     });
-
     function generatePagination() {
       var paginationList = $(".pagination-list");
       paginationList.empty(); // Clear existing page items
