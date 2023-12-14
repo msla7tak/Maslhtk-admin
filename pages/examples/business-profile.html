@@ -214,7 +214,19 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
+    <div class="container-fluid">
+      <div class="card card-solid">
+        <!-- start Api git -->
+        <div class="d-flex justify-content-end">
+          <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+            <button type="button" class="btn btn-block btn-outline-primary btn-lg"
+                    onclick="redirectToServicePage()">
+              Create Service
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Main content -->
     <section class="content">
 <script>
@@ -562,9 +574,6 @@
       dataType: "json",
       success: function (response) {
         populateTable(response); // Pass the offset to the populateTable function
-
-        // Populate the contact details in the HTML elements
-
       },
       error: function (xhr, status, error) {
         console.log(error); // Log any errors in the browser console
