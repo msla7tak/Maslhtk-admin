@@ -200,6 +200,9 @@
           <!-- start Api git -->
           <div class="d-flex justify-content-end">
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+              <input type="file" id="fileInput" />
+              <button onclick="handleFile()">Import Excel</button>
+
               <button type="button" class="btn btn-block btn-outline-primary btn-lg"
                 onclick="window.location.href='/pages/examples/add_user.html'">
                 Create User Account
@@ -475,6 +478,39 @@
 
     });
 
+    function handleFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+
+          // Assuming you are reading the first sheet
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+
+          // Convert sheet data to JSON
+          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: ['name', 'age'] });
+
+          // Separate "name" and "age" into lists
+          const nameList = jsonData.map(row => row.name);
+          const ageList = jsonData.map(row => row.age);
+
+          // Process nameList and ageList as needed
+          console.log('Names:', nameList);
+          console.log('Ages:', ageList);
+
+        };
+
+        reader.readAsArrayBuffer(file);
+      } else {
+        alert('Please select an Excel file.');
+      }
+    }
 
     function generatePagination() {
       var paginationList = $(".pagination-list");
@@ -509,6 +545,7 @@
       });
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 
   <!-- jQuery -->
   <script src="../../plugins/jquery/jquery.min.js"></script>
