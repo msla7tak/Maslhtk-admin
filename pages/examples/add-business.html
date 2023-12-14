@@ -333,7 +333,7 @@
 
 
   function populateCities(regionId) {
-    $city.empty();
+
     $.ajax({
       url: 'https://masl7tak-production.up.railway.app/api/public/region/' + regionId,
       method: 'GET',
