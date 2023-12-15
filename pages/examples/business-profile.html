@@ -402,7 +402,7 @@
           const sheet = workbook.Sheets[sheetName];
 
           // Convert sheet data to JSON
-          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: [ 'name', 'discount_value', 'valid_until', 'description','category_id', 'max_usage','images'] });
+          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: [ 'name', 'discount_value', 'valid_until', 'description','category_id', 'max_usage','images','car_brand'] });
           var urlParams = new URLSearchParams(window.location.search);
           var itemId = urlParams.get('itemId');
           // Loop through each row in jsonData and make API calls
