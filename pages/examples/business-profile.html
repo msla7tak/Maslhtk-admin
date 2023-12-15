@@ -419,9 +419,8 @@
             formData.append('description', row.description);
             formData.append('max_usage', row.max_usage);
             const carBrandEntities = row.car_brand.split(',').map(id =>   id );
-            formData.append('carBrandEntities', JSON.stringify(carBrandEntities));
+            formData.append('carBrandEntities', carBrandEntities);
 
-            console.log('Form :'+carBrandEntities +'   ', JSON.stringify(carBrandEntities));
 
 
 
