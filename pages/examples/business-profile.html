@@ -418,7 +418,7 @@
             formData.append('categoryId',  row.category_id);
             formData.append('description', row.description);
             formData.append('max_usage', row.max_usage);
-            formData.append('carBrandEntities', JSON.stringify( row.car_brand));
+            formData.append('carBrandEntities', JSON.stringify( (row.car_brand).split(',')));
 
 
 
