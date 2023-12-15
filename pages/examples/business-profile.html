@@ -418,7 +418,10 @@
             formData.append('categoryId',  row.category_id);
             formData.append('description', row.description);
             formData.append('max_usage', row.max_usage);
-            formData.append('carBrandEntities', JSON.stringify( (row.car_brand).split(',')));
+            const carBrandEntities = row.car_brand.split(',').map(id => ({ id: parseInt(id) }));
+            formData.append('carBrandEntities', JSON.stringify(carBrandEntities));
+
+            console.log('Form :'+carBrandEntities +'   ', JSON.stringify(carBrandEntities));
 
 
 
