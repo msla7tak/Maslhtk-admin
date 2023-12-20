@@ -279,7 +279,7 @@
       method: 'GET',
       success: function (data) {
         $('#name').val(data.name);
-        // $('#name_en').val(data.name_en);
+        $('#name_en').val(data.name_en);
       },
       error: function (xhr, status, error) {
         alert('Form submission error!');
