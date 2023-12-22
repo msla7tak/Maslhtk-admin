@@ -435,7 +435,6 @@
       const phone_number = $('#phone_number').val();
       const openTime = $('#openTime').val();
       const closureTime = $('#closureTime').val();
-      const working_days = $('#working_days').val();
       const region = $('#region').val();
       const city = $('#city').val();
       // Construct the form data
@@ -448,15 +447,15 @@
         "subscription_type": subscription_type,
         "description": description,
         "terms_conditions": terms_conditions,
-        "category_id": category_id,
+        "category_id": category_id??0,
         "address": address,
+        "working_days": "1-1-1-1-1-1-1",
         "locationLink": locationLink,
         "phone_number": phone_number,
         "openTime": openTime,
         "closureTime": closureTime,
-        "working_days": working_days,
-        "region_id": region,
-        "city_id": city,
+        "region_id": region??0,
+        "city_id": city??0,
         "logo": image,
 
       };
