@@ -557,9 +557,9 @@
                        ${service.products.name}
                           </td>
                           <td>
-                               ${service.discount_value > 1
+                                       ${service.discount_value > 1
           ? service.discount_value
-          : (service.discount_value * 100) + '%'}
+          :parseInt((service.discount_value * 100)) + '%'}
                           </td>
 
                           <td >
@@ -601,9 +601,9 @@
                        ${service.products.name}
                           </td>
                           <td>
-                               ${service.discount_value > 1
+                         ${service.discount_value > 1
           ? service.discount_value
-          : (service.discount_value * 100) + '%'}
+          :parseInt((service.discount_value * 100)) + '%'}
                           </td>
 
                           <td >

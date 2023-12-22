@@ -298,9 +298,9 @@
             </div>
             <div class="col-md-4">
               <p class="mb-1 text-muted"><i class="fas fa-sync-alt mr-1"></i>Discount Value</p>
-              <strong class="ps-2">${response.service_discount > 1
-      ? response.service_discount
-      : (response.service_discount * 100) + '%'}</strong>
+              <strong class="ps-2">         ${response.discount_value > 1
+      ? response.discount_value
+      :parseInt((response.discount_value * 100)) + '%'}</strong>
             </div>
             <div class="col-md-4">
               <p class="mb-1 text-muted"><i class="fas fa-sign-in-alt mr-1"></i>  Coupon code</p>

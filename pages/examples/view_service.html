@@ -339,9 +339,9 @@
             </div>
             <div class="col-md-4">
               <p class="mb-1 text-muted"><i class="fas fa-comment-dollar"></i> Discount Value</p>
-              <strong class="ps-2">${response.discount_value > 1
+              <strong class="ps-2">         ${response.discount_value > 1
       ? response.discount_value
-      : (response.discount_value * 100) + '%'}</strong>
+      :parseInt((response.discount_value * 100)) + '%'}</strong>
             </div>
             <div class="col-md-4">
               <p class="mb-1 text-muted"><i class="fas fa-battery-full mr-1"></i> Available</p>
