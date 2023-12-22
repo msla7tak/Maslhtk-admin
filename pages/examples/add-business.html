@@ -231,8 +231,8 @@
                   <input type="file" class="form-control" id="logo" name="logo">
                 </div>
                 <div class="form-group">
-                  <label for="category-select">Category:</label>
-                  <select id="category-select" class="form-control" name="category_id"></select>
+                  <label for="category_id">Category:</label>
+                  <select id="category_id" class="form-control" name="category_id"></select>
                 </div>
                 <div class="form-group">
                   <label for="description">Description:</label>
@@ -399,7 +399,7 @@
     url: 'https://masl7tak-production.up.railway.app/api/public/category',
     method: 'GET',
     success: function (data) {
-      const $categorySelect = $('#category-select');
+      const $categorySelect = $('#category_id');
       $categorySelect.empty();
       $.each(data, function (index, category) {
         $categorySelect.append($('<option>', {
@@ -429,7 +429,6 @@
       const files = $('#logo')[0].files; // use [0] to get the DOM element
       const token = localStorage.getItem('token')
 
-
       const address = $('#address').val();
       const locationLink = $('#locationLink').val();
       const phone_number = $('#phone_number').val();
@@ -447,7 +446,7 @@
         "subscription_type": subscription_type,
         "description": description,
         "terms_conditions": terms_conditions,
-        "category_id": category_id??0,
+        "category_id": category_id,
         "address": address,
         "working_days": "1-1-1-1-1-1-1",
         "locationLink": locationLink,
