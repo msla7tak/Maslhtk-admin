@@ -333,7 +333,7 @@
                         <td>
                            ${service.discount_value > 1
             ? service.discount_value
-            : (service.discount_value * 100) + '%'}
+            : (service.discount_value * 100).intValue() + '%'}
                         </td>
 
                         <td >
