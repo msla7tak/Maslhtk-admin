@@ -380,6 +380,9 @@
         url: "https://masl7tak-production.up.railway.app/api/public/faq", // Set the default offset to 1
         type: "GET",
         dataType: "json",
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
         success: function (response) {
           populateTable(response, 1); // Pass the default offset value to the populateTable function
         },
@@ -393,6 +396,9 @@
         url: "https://masl7tak-production.up.railway.app/api/public/faq/support", // Set the default offset to 1
         type: "GET",
         dataType: "json",
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
         success: function (response) {
           populateTable2(response, 1); // Pass the default offset value to the populateTable function
         },
