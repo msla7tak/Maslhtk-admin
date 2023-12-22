@@ -317,7 +317,6 @@
           console.log(error); // log any errors in the browser console
         },
       });
-      initializeDataTables();
 
     }
 
@@ -351,9 +350,12 @@
         `;
             container.append(cardHtml); // Append the generated card to the container
           });
-        });
+        }
+
+
+      );
+        initializeDataTables();
       }
-      initializeDataTables();
 
     }
 
