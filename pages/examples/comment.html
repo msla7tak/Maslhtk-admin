@@ -346,18 +346,7 @@
       }
     }
 
-    function confirmDelete(categoryId) {
-      // Display a confirmation dialog to the user
-      const confirmDelete = confirm('Are you sure you want to delete this category?');
 
-      if (confirmDelete) {
-        // User confirmed the deletion, perform the actual deletion logic
-        deleteCategory(categoryId);
-      } else {
-        // User canceled the deletion, do nothing or handle the cancellation if needed
-        console.log('Deletion canceled by the user.');
-      }
-    }
 
   </script>
 
@@ -370,6 +359,7 @@
         Authorization: 'Bearer ' + localStorage.getItem('token')
       },
       success: function (response) {
+        console.log(response); // Log any errors in the browser console
         populateTable(response, 1); // Pass the default offset value to the populateTable function
       },
       error: function (xhr, status, error) {
