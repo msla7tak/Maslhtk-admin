@@ -235,7 +235,13 @@
                     Branch ID
                   </th>
                   <th>
-                    Totel Invoice
+                    Total Invoice
+                  </th>
+                  <th>
+                  Promo code
+                  </th>
+                  <th>
+                    Discount value
                   </th>
                   <th style="width: 8%" class="text-center">
                     invoiced
@@ -319,6 +325,11 @@
                         </td>
                         <td >
                           ${redame.total_invoice??""}
+                          </td>
+                           <td >
+                          ${redame.promo_code??""}
+                          </td>     <td >
+                          ${redame.promo_code_discount??""}
                           </td>
                         <td class="project-state">
                             <span class="badge ${redame.invoiced == 'false' ? 'badge-primary' : 'badge-success'}">   ${redame.invoiced =='false' ? 'false' : 'true'}</span>
