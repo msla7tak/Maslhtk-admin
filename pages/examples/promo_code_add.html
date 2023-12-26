@@ -236,9 +236,15 @@
                     <input type="text" class="form-control" placeholder="0.5" id="discountValue" name="discountValue" required>
                   </div>
 
+
                   <div class="form-group">
-                    <label for="validUntil">Valid Until:</label>
-                    <input type="text" class="form-control" id="validUntil" value="2023-11-20" name="validUntil" required>
+                    <label>Date:</label>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                      <input type="text" id="validUntil" class="form-control datetimepicker-input" data-target="#reservationdate">
+                      <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="form-group">
@@ -417,6 +423,58 @@
         theme: 'bootstrap4'
       })})
   </script>
+
+  </script>
+
+  <script>
+    $(function () {
+
+      //Date picker
+      $('#reservationdate').datetimepicker({
+        format: 'YYYY-MM-DD'  // Change the format here
+      });
+
+      //Date range picker
+      $('#reservation').daterangepicker()
+      //Date range picker with time picker
+      $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+          format: 'MM/DD/YYYY hh:mm A'
+        }
+      })
+
+    })
+
+
+    // DropzoneJS Demo Code End
+  </script>
+  <!-- jQuery -->
+  <!-- Bootstrap 4 -->
+  <!-- Select2 -->
+  <script src="../../plugins/select2/js/select2.full.min.js"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- InputMask -->
+  <script src="../../plugins/moment/moment.min.js"></script>
+  <script src="../../plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Bootstrap Switch -->
+  <script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+  <!-- BS-Stepper -->
+  <script src="../../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+  <!-- dropzonejs -->
+  <script src="../../plugins/dropzone/min/dropzone.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <!-- Page specific script -->
 </body>
 
 </html>
