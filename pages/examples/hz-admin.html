@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maslhtk | Add Service</title>
+  <title>Maslhtk | Add User</title>
   <script>
     if (!localStorage.getItem('token'))
       window.location.href = '/pages/examples/login-v2.html';
@@ -35,7 +35,22 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
+        <!-- Logout -->
 
+        <li class="nav-item">
+          <ul class="navbar-nav d-flex flex-row ms-auto me-3">
+            <li class="nav-item me-3 me-lg-0 dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="dist/img/AdminLTELogo.png" class="rounded-circle" height="30" alt="" loading="lazy" />
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1">
+                <li><a class="dropdown-item" id="logout" href="#">Logout</a></li>
+                <!-- Add more dropdown items here if needed -->
+              </ul>
+          </ul>
+        </li>
+        <!-- end Logout -->
 
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -77,13 +92,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/examples/users.html" class="nav-link ">
+              <a href="/pages/examples/users.html" class="nav-link active">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Users</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/examples/service.html" class="nav-link active ">
+              <a href="/pages/examples/service.html" class="nav-link  ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Services</p>
               </a>
@@ -95,9 +110,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="/pages/examples/readem.html" class="nav-link  ">
+              <a href="/pages/examples/event.html" class="nav-link  ">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Readem</p>
+                <p>Event</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/examples/point.html" class="nav-link  ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Point</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/pages/examples/comment.html" class="nav-link  ">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Comment</p>
               </a>
             </li>
             <li class="nav-item">
@@ -122,36 +149,6 @@
               <a href="/pages/examples/promo_code.html" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Promo Code</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pages/examples/carbrand.html" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Car Brand</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pages/examples/event.html" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Event</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pages/examples/point.html" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Point</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pages/examples/comment.html" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Comment</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/pages/examples/faq.html" class="nav-link  ">
-                <i class="far fa-circle nav-icon"></i>
-                <p>FAQs</p>
               </a>
             </li>
             <li class="nav-item">
@@ -182,12 +179,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Add Service</h1>
+              <h1>Add User</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Add Service</li>
+                <li class="breadcrumb-item active">Add User</li>
               </ol>
             </div>
           </div>
@@ -197,10 +194,10 @@
       <!-- Main content -->
       <section class="content">
         <div class="row">
-          <div class="col-md-12 ">
+          <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Service</h3>
+                <h3 class="card-title">User</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -213,35 +210,21 @@
                 <form>
                   <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <input type="text" class="form-control" id="name" name="name">
                   </div>
                   <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" name="description" required></textarea>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="discountValue">Discount Value:</label>
-                    <input type="text" class="form-control" placeholder="0.5" id="discountValue" name="discountValue" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="validUntil">Valid Until:</label>
-                    <input type="text" class="form-control" id="validUntil" placeholder="2024-11-20" name="validUntil" required>
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email">
                   </div>
 
                   <div class="form-group">
-                    <label for="image">Image:</label>
-                    <input type="file" class="form-control" id="image" name="image" required>
+                    <label for="Password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password">
                   </div>
 
                   <div class="form-group">
-
-                    <label for="category-select">Category:</label>
-                    <select id="category-select" class="form-control" name="category_id" required></select>
-                  </div>
-                  <div class="form-group">
-                    <label for="max_usage">Max Usage:</label>
-                    <input type="text" class="form-control" id="max_usage"  name="max_usage" required>
+                    <label for="contact_number">Contact number:</label>
+                    <input type="text" class="form-control" id="contact_number" name="Contact_number">
                   </div>
 
                   <!-- Add other input fields for the remaining properties -->
@@ -251,6 +234,7 @@
             </div>
             <!-- /.card -->
           </div>
+
         </div>
         <div class="row">
           <div class="col-12">
@@ -280,114 +264,52 @@
   <!-- ./wrapper -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    $.ajax({
-      url: 'https://masl7tak-production.up.railway.app/api/public/category',
-      method: 'GET',
-      success: function (data) {
-        const $categorySelect = $('#category-select');
-        $categorySelect.empty();
-        $.each(data, function (index, category) {
-          $categorySelect.append($('<option>', {
-            value: category.id,
-            text: category.name
-          }));
-        });
-      }
-    });
+
 
     $(document).ready(function () {
-      var urlParams = new URLSearchParams(window.location.search);
-      var businessId = urlParams.get('businessId');
-
       $('form').submit(function (event) {
         event.preventDefault(); // prevent default form submission behavior
+        // name email status subscription_type logo category_id description terms_conditions
 
         // Get values from the form
-        const discountValue = $('#discountValue').val();
-        const name = $('#name').val();
-        const description = $('#description').val();
-        const validUntil = $('#validUntil').val();
-        const categoryId = $('#category-select').val();
-        const max_usage = $('#max_usage').val();
+        const name = $('#name').val() + '';
+        const email = $('#email').val() + '';
+        const password = $('#password').val() + '';
+        const contact_number = $('#contact_number').val() + '';
+        // Construct the form data
+        const userDTO = {
+          "name": name,
+          "email": email,
+          "password": password,
+          "contact_number": contact_number,
+          "car_model": "0",
+          "car_brand": "0"
+        };
 
-        const files = $('#image')[0].files; // use [0] to get the DOM element
-
-        const token = localStorage.getItem('token');
-        uploadImage(files, function (image) {
-
-        const formData = new FormData();
-        formData.append('images', image);
-        formData.append('discountValue', discountValue);
-        formData.append('validUntil', validUntil);
-        formData.append('name', name);
-        formData.append('is_available', true);
-        formData.append('rate', 5);
-        formData.append('businessId', businessId);
-        formData.append('categoryId', categoryId);
-        formData.append('carBrand', 0);
-        formData.append('carModel', 0);
-          const carBrandEntities = [0]
-          formData.append('carBrandEntities', carBrandEntities);
-          formData.append('carModelEntities', carBrandEntities);
-        formData.append('description', description);
-        formData.append('max_usage', max_usage);
+        // formData.append('logo', imageFile);
 
         // Submit the form data using AJAX
         $.ajax({
-          url: 'https://masl7tak-production.up.railway.app/api/business/service/save',
+          url: 'https://masl7tak-production.up.railway.app/api/admin/user/create_admin',
           type: 'POST',
-          data: formData,
-          processData: false,
-          contentType: false,
-          headers: {
-            Authorization: 'Bearer ' + token
-          },
+          contentType: 'application/json', // Set content type to JSON
+          data: (JSON.stringify(userDTO)), // Convert userDTO to JSON stri
           success: function (data) {
             console.log('Form submission success:', data);
             // Clear the form
             $('form').trigger('reset');
             // Show a pop-up message
-            alert('Service submitted successfully!');
+            alert('Form submitted successfully!');
           },
           error: function (xhr, status, error) {
-
             alert('Form submission error!');
+
             console.error('Form submission error:', error);
-            // Handle error response
+            console.log('Response Text:', xhr.responseText);            // Handle error response
           }
         });
-        });
-
       });
-      function uploadImage(files, callback) {
-        const formData = new FormData();
-
-        for (let i = 0; i < files.length; i++) {
-          formData.append('file', files[i]);
-        }
-
-        $.ajax({
-          url: "https://masl7tak-production.up.railway.app/api/user/s3/upload",
-          type: "POST",
-          data: formData,
-          processData: false,
-          contentType: false,
-          headers: {
-            Authorization: 'Bearer ' +  localStorage.getItem('token')
-          },
-          success: function (response) {
-            callback(response); // Pass the response to the callback function
-          },
-          error: function (xhr, status, error) {
-
-            alert('Form submission error!');
-            console.log(error); // log any errors in the browser console
-          },
-        });
-      }
     });
-
-
   </script>
   <!-- jQuery -->
   <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -397,6 +319,25 @@
   <script src="../../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../dist/js/demo.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.dropdown-toggle').dropdown();
+
+      $('#logout').click(function (e) {
+        e.stopPropagation(); // Prevent the click event from propagating to the document
+
+        localStorage.removeItem("token");
+        window.location.href = '/pages/examples/login-v2.html';
+      });
+
+      $(document).click(function (e) {
+        // Check if the clicked element is outside the dropdown
+        if (!$(e.target).parents('.dropdown-menu').length) {
+          $('.dropdown-menu').removeClass('show'); // Close the dropdown
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
