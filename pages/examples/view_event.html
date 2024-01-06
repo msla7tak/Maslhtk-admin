@@ -287,12 +287,39 @@
       container.empty(); // Clear the existing content
       container.append(`        <br>
               <div class="col-12 col-sm-6 col-md-4">
-                <div class="d-flex justify-content-end" id="button-create">
-                   <button type="button" class="btn btn-block btn-outline-primary btn-lg"
-                  onclick="redirectToServicePage()">
-            Create Services
-          </button>
+                      <div class="container-fluid" >
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="fileInput" aria-describedby="inputGroupFileAddon">
+                      <label class="custom-file-label" for="fileInput">Choose file</label>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <button id="importButton" class="btn btn-primary">Import</button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-sm-6 ">
+           <button type="button" class="btn btn-block btn-outline-primary btn-lg"
+                  onclick="redirectToServicePage()">
+                        Create Services
+                      </button>
+            </div>
+          </div>
+        </div>
+
+
               </div>
 
               <br> <div class="card card-primary card-outline">
@@ -392,7 +419,90 @@
     });
   </script>
   <!-- jQuery -->
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../../dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../../dist/js/demo.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#importButton').click(function () {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
 
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Assuming you are reading the first sheet
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+
+            // Convert sheet data to JSON
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: [ 'name', 'discount_value',
+                'valid_until', 'schedule_mode','description','category_id', 'max_usage','images','car_brand','businessId'] });
+            var urlParams = new URLSearchParams(window.location.search);
+
+            // Loop through each row in jsonData and make API calls
+            jsonData.slice(1).forEach(row => {
+              const formData = new FormData();
+              formData.append('images', row.images);
+              formData.append('discountValue', row.discount_value);
+              formData.append('validUntil', row.valid_until);
+              formData.append('name', row.name);
+              formData.append('is_available', true);
+              formData.append('rate', 5);
+              formData.append('businessId', row.businessId);
+              formData.append('categoryId',  row.category_id);
+              formData.append('description', row.description);
+              formData.append('max_usage', row.max_usage);
+              formData.append('schedule_mode', row.schedule_mode);
+              const carBrandEntities = row.car_brand.split(',').map(id =>   id );
+              formData.append('carBrandEntities', carBrandEntities);
+
+
+
+
+              // Submit the form data using AJAX
+              $.ajax({
+                url: 'https://masl7tak-production.up.railway.app/api/business/service/save',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                  Authorization: 'Bearer ' + localStorage.getItem('token')
+                },
+                success: function (data) {
+                  console.log('Form submission success:', data);
+                },
+                error: function (xhr, status, error) {
+                  console.error('Form submission error:', error);
+                  console.log('Response Text:', xhr.responseText);
+                  // Handle error response
+                }
+              });
+            });
+
+            // Optionally, clear the form or perform other actions after all API calls are made
+            // Clear the form
+            $('#fileInput').val(''); // Reset the file input
+            // Show a pop-up message
+            alert('Form submitted successfully!');
+          };
+
+          reader.readAsArrayBuffer(file);
+        } else {
+          alert('Please select an Excel file.');
+        }
+      });
+    });
+    </script>
 </body>
 
 </html>
