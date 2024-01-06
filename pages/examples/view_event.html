@@ -453,6 +453,9 @@
               formData.append('validUntil', row.valid_until);
               formData.append('name', row.name);
               formData.append('is_available', true);
+              var eventId = urlParams.get('itemId');
+
+              formData.append('eventId', eventId);
               formData.append('rate', 5);
               formData.append('businessId', row.businessId);
               formData.append('categoryId',  row.category_id);
@@ -467,7 +470,7 @@
 
               // Submit the form data using AJAX
               $.ajax({
-                url: 'https://masl7tak-production.up.railway.app/api/business/service/save',
+                url: 'https://masl7tak-production.up.railway.app/api/business/service_event/save',
                 type: 'POST',
                 data: formData,
                 processData: false,

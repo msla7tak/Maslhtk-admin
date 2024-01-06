@@ -261,6 +261,13 @@
 <!--                  </div>-->
 
                   <div class="form-group">
+                    <label for="schedule_mode">schedule mode:</label>
+                    <select class="form-control" id="schedule_mode" name="schedule_mode">
+                      <option value="0">Active</option>
+                      <option value="1">NotActive</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label for="image">Image:</label>
                     <input type="file" class="form-control" id="image" name="image" required>
                   </div>
@@ -340,6 +347,7 @@
         const validUntil = $('#validUntil').val();
         const categoryId = $('#category-select').val();
         const max_usage = $('#max_usage').val();
+        const schedule_mode = $('#schedule_mode').val();
 
         const files = $('#image')[0].files; // use [0] to get the DOM element
 
@@ -355,7 +363,8 @@
         formData.append('rate', 5);
         formData.append('businessId', businessId);
         formData.append('categoryId', categoryId);
-        formData.append('carBrand', 0);
+        formData.append('schedule_mode', schedule_mode);
+          formData.append('carBrand', 0);
         formData.append('carModel', 0);
           const carBrandEntities = [0]
           formData.append('carBrandEntities', carBrandEntities);
