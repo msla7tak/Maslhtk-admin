@@ -304,7 +304,7 @@
                                 </div>
                                 <div class="row mt-2"> <!-- Added margin-top for spacing -->
                                     <div class="col-sm-6">
-                                        <button id="importButton" class="btn btn-primary">Import</button>
+                                        <button id="importButton"  onclick="importButton()" class="btn btn-primary">Import</button>
                                     </div>
                                 </div>
                             </div>
@@ -397,27 +397,8 @@
     });
   </script>
   <script>
-    $(document).ready(function () {
-      $('.dropdown-toggle').dropdown();
+  function importButton () {
 
-      $('#logout').click(function (e) {
-        e.stopPropagation(); // Prevent the click event from propagating to the document
-
-        localStorage.removeItem("token");
-        window.location.href = '/pages/examples/login-v2.html';
-      });
-
-      $(document).click(function (e) {
-        // Check if the clicked element is outside the dropdown
-        if (!$(e.target).parents('.dropdown-menu').length) {
-          $('.dropdown-menu').removeClass('show'); // Close the dropdown
-        }
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function () {
-      $('#importButton').click(function () {
         console.log('importButton:');
 
         const fileInput = document.getElementById('fileInput');
@@ -494,14 +475,34 @@
         } else {
           alert('Please select an Excel file.');
         }
-      });
-    });
+
+    }
 
     function updateFileName() {
       var fileName = $('#fileInput').val().split('\\').pop();
       $('.custom-file-label').text(fileName);
     }
 
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $('.dropdown-toggle').dropdown();
+
+      $('#logout').click(function (e) {
+        e.stopPropagation(); // Prevent the click event from propagating to the document
+
+        localStorage.removeItem("token");
+        window.location.href = '/pages/examples/login-v2.html';
+      });
+
+      $(document).click(function (e) {
+        // Check if the clicked element is outside the dropdown
+        if (!$(e.target).parents('.dropdown-menu').length) {
+          $('.dropdown-menu').removeClass('show'); // Close the dropdown
+        }
+      });
+    });
   </script>
 
   <!-- jQuery -->
