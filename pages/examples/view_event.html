@@ -429,7 +429,10 @@
               formData.append('name', row.name);
               formData.append('is_available', true);
               var eventId = urlParams.get('itemId');
-
+              formData.append('carBrand', 0);
+              formData.append('carModel', 0);
+              const carBrandEntitie = [0]
+              formData.append('carModelEntities', carBrandEntitie);
               formData.append('eventId', eventId);
               formData.append('rate', 5);
               formData.append('businessId', row.businessId);

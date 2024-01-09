@@ -457,7 +457,10 @@
               formData.append('validUntil', row.valid_until);
               formData.append('name', row.name);
               formData.append('is_available', true);
-
+              formData.append('carBrand', 0);
+              formData.append('carModel', 0);
+              const carBrandEntitie = [0]
+              formData.append('carModelEntities', carBrandEntitie);
               formData.append('eventId', itemId);
               formData.append('rate', 5);
               formData.append('businessId', businessId);
