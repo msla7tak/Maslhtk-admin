@@ -455,6 +455,7 @@
                 },
                 success: function (data) {
                   console.log('Form submission success:', data);
+
                 },
                 error: function (xhr, status, error) {
                   console.error('Form submission error:', error);
@@ -466,9 +467,11 @@
 
             // Optionally, clear the form or perform other actions after all API calls are made
             // Clear the form
+            alert('Form submitted successfully!');
+
             $('#fileInput').val(''); // Reset the file input
             // Show a pop-up message
-            alert('Form submitted successfully!');
+
           };
 
           reader.readAsArrayBuffer(file);
