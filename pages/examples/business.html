@@ -340,7 +340,7 @@
 
                             </td>
                               <td class="project-state">
-                            <span class="badge ${business.status == "active" ? 'badge-primary' : 'badge-success'}">   ${business.status =="active" ? 'Active' : 'Not Active'}</span>
+                            <span class="badge ${business.status == 1 ? 'badge-primary' : 'badge-success'}">   ${business.status ==1? 'Active' : 'Not Active'}</span>
                         </td>
                         <td class="project-actions text-right">
                             <a class="btn btn-primary btn-sm" href="business-profile.html?itemId=${business.id}">
