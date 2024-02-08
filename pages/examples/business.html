@@ -402,9 +402,12 @@
 
   <script>
     $.ajax({
-      url: "https://masl7tak-production.up.railway.app/api/public/businesses?offset=0", // Set the default offset to 1
+      url: "https://masl7tak-production.up.railway.app/api/admin/all_businesses?offset=0", // Set the default offset to 1
       type: "GET",
       dataType: "json",
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      },
       success: function (response) {
         populateTable(response, 1);
         initializeDataTables();
@@ -424,9 +427,12 @@
       if (currentPage > 1) {
         currentPage--;
         $.ajax({
-          url: "https://masl7tak-production.up.railway.app/api/public/businesses?offset=" + (currentPage - 1),
+          url: "https://masl7tak-production.up.railway.app/api/admin/all_businesses?offset=" + (currentPage - 1),
           type: "GET",
           dataType: "json",
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+          },
           success: function (response) {
             populateTable(response, currentPage);
             if (!response.empty) {
@@ -446,9 +452,12 @@
     $("#nextButton").click(function () {
       currentPage++;
       $.ajax({
-        url: "https://masl7tak-production.up.railway.app/api/public/businesses?offset=" + (currentPage - 1),
+        url: "https://masl7tak-production.up.railway.app/api/admin/all_businesses?offset=" + (currentPage - 1),
         type: "GET",
         dataType: "json",
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
         success: function (response) {
           populateTable(response, currentPage);
           if (!response.empty) {
