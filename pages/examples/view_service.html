@@ -488,6 +488,9 @@
       url: "https://masl7tak-production.up.railway.app/api/admin/services/" + itemId, // Update the URL with your API endpoint
       type: "GET",
       dataType: "json",
+      headers: {
+        Authorization: 'Bearer ' +  localStorage.getItem('token')
+      },
       success: function (response) {
         populateTable(response); // Pass the offset to the populateTable function
 
