@@ -388,12 +388,23 @@
               <p class="mb-1 text-muted mr-1"><i class="fas fa-building"></i>Business Name</p>
               <strong class="ps-2">${response.business.name}</strong>
             </div>
-                <div class="col-md-4">
+            <div class="col-md-4">
               <p class="mb-1 text-muted mr-1"><i class="fas fa-chart-line"></i> visits num</p>
               <strong class="ps-2">${response.visit_num}</strong>
             </div>
+            <div class="col-md-4">
+              <p class="mb-1 text-muted mr-1"><i class="fas fa-chart-line"></i>Brand</p>
+              <strong class="ps-2">${response.carBrandEntities}</strong>
+            </div>
           </div>
+          <hr>
+         <div class="row">
+            <div class="col-md-12">
+              <p class="mb-1 text-muted mr-1"><i class="fas fa-clock"></i> Description</p>
+              <strong class="ps-2">${response.products.description??"---"}</strong>
+            </div>
 
+          </div>
           </div>
           <hr>
 
@@ -474,7 +485,7 @@
 
     // Make an AJAX request to fetch the contact details based on the itemId
     $.ajax({
-      url: "https://masl7tak-production.up.railway.app/api/public/services/" + itemId, // Update the URL with your API endpoint
+      url: "https://masl7tak-production.up.railway.app/api/admin/services/" + itemId, // Update the URL with your API endpoint
       type: "GET",
       dataType: "json",
       success: function (response) {
