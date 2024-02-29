@@ -245,7 +245,7 @@
                     ID
                   </th>
                   <th style="width: 30%">
-                    Event Titel
+                    Event Title
                   </th>
 
 
@@ -283,7 +283,7 @@
                   ID
                 </th>
                 <th style="width: 30%">
-                  Event Titel
+                  Event Title
                 </th>
                 <th>
                   Merchant Name
@@ -294,6 +294,38 @@
               </tr>
               </thead>
               <tbody id="api-git">
+
+
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <br>
+          </div>
+          <hr>
+          <div class="col-sm-12">
+            <h5 class="breadcrumb-item active">Service Event:</h5>
+            <br>
+          </div>
+          <div class="card-body p-0">
+            <table class="table table-striped projects text-center">
+              <thead>
+              <tr>
+                <th style="width: 10%">
+                  ID
+                </th>
+                <th style="width: 30%">
+                  Event Title
+                </th>
+                <th>
+                  Merchant Name
+                </th>
+
+
+
+              </tr>
+              </thead>
+              <tbody id="api-git-service">
 
 
               </tbody>
@@ -367,10 +399,54 @@
           container.append(cardHtml); // Append the generated card to the container
         });
       }
-    }   function populateTable(response, offset) {
+    }
+    function populateTable(response, offset) {
       console.log(response); // Check the response in the browser console
       if (response && response.length > 0) { // Check if the response contains data
         var container = $("#api-git-container");
+        container.empty(); // Clear the existing content
+
+        $.each(response, function (i, event) {
+
+
+          var cardHtml = `
+              <tr  >
+                        <td>
+                          ${event.id}
+                        </td>
+                        <td>
+                            <a>
+                              ${event.event_title}     ${event.event_sub_title}
+                                                          </a>
+
+                        </td>
+
+
+
+
+                        <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="view_event.html?itemId=${event.id}">
+                  <i class="fas fa-folder"></i> View
+                </a>
+                            <a class="btn btn-danger btn-sm" onclick="confirmDelete(${event.id})">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+
+            `;
+
+
+          container.append(cardHtml); // Append the generated card to the container
+        });
+      }
+    }
+    function populateServiceTable(response, offset) {
+      console.log(response); // Check the response in the browser console
+      if (response && response.length > 0) { // Check if the response contains data
+        var container = $("#api-git-service");
         container.empty(); // Clear the existing content
 
         $.each(response, function (i, event) {
@@ -455,6 +531,31 @@
       dataType: "json",
       success: function (response) {
         populateTable(response, 1); // Pass the default offset value to the populateTable function
+      },
+      error: function (xhr, status, error) {
+        alert('Form submission error!');
+
+        console.log(error); // Log any errors in the browser console
+      }
+    });    $.ajax({
+      url: "https://masl7tak-production.up.railway.app/api/public/event-offers/business-events", // Set the default offset to 1
+      type: "GET",
+      dataType: "json",
+      success: function (response) {
+        Table(response, 1); // Pass the default offset value to the populateTable function
+      },
+      error: function (xhr, status, error) {
+        alert('Form submission error!');
+
+        console.log(error); // Log any errors in the browser console
+      }
+    });
+    $.ajax({
+      url: "https://masl7tak-production.up.railway.app/api/public/event-offers/services-event", // Set the default offset to 1
+      type: "GET",
+      dataType: "json",
+      success: function (response) {
+        populateServiceTable(response, 1); // Pass the default offset value to the populateTable function
       },
       error: function (xhr, status, error) {
         alert('Form submission error!');

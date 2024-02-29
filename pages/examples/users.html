@@ -490,7 +490,7 @@
     $("#nextButton").click(function () {
       currentPage++;
       $.ajax({
-        url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser?offset=" + (currentPage - 1),
+        url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser?offset=" + (currentPage + 1),
         type: "GET",
         dataType: "json",
         success: function (response) {

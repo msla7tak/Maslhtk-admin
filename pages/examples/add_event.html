@@ -211,13 +211,13 @@
 
                 <form>
 
-                  <div class="form-group">
-                    <label for="event_title">event title:</label>
-                    <input type="email" class="form-control" id="event_title" name="event title">
-                  </div>
+<!--                  <div class="form-group">-->
+<!--                    <label for="event_title">event title:</label>-->
+<!--                    <input type="email" class="form-control" id="event_title" name="event title">-->
+<!--                  </div>-->
 
                   <div class="form-group">
-                    <label for="event_sub_title">event sub title:</label>
+                    <label for="event_sub_title">event  title:</label>
                     <input type="text" class="form-control" id="event_sub_title" name="event_sub_title">
                   </div>
 
@@ -226,6 +226,15 @@
                     <label for="business-select">business:</label>
                     <select id="business-select"  class="select2bs4"  data-placeholder="Select a business"
                             style="width: 100%;">
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="type">Type :</label>
+                    <select class="form-control" id="type" name="type">
+                      <option value=0>Banner</option>
+                      <option value=1>Small Banner</option>
+                      <option value=2>Service Banner</option>
+
                     </select>
                   </div>
 
@@ -302,9 +311,10 @@
         event.preventDefault(); // prevent default form submission behavior
 
         // Get values from the form
-        const event_title = $('#event_title').val() + '';
+        // const event_title = $('#event_title').val() + '';
         const event_sub_title = $('#event_sub_title').val() + '';
         const selectedValue = $('#business-select').val();
+        const type = $('#type').val();
         const businessId = selectedValue !== '' ? selectedValue : null;
         const files = $('#image')[0].files; // use [0] to get the DOM element
         const token = localStorage.getItem('token');
@@ -312,10 +322,11 @@
           // Callback function for handling the image upload response
 
           const eventOb = {
-            "event_title": event_title,
+            "event_title": "",
             "event_sub_title": event_sub_title,
             "image": image,
-            "business":businessId
+            "business":businessId,
+            "type":type
           };
 
           $.ajax({
