@@ -434,7 +434,7 @@
 
   <script>
     $.ajax({
-      url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser", // Set the default offset to 1
+      url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser?offset=0", // Set the default offset to 1
       type: "GET",
       dataType: "json",
       headers: {
@@ -490,7 +490,7 @@
     $("#nextButton").click(function () {
       currentPage++;
       $.ajax({
-        url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser?offset=" + (currentPage + 1),
+        url: "https://masl7tak-production.up.railway.app/api/admin/user/alluser?offset=" + (currentPage - 1),
         type: "GET",
         dataType: "json",
         success: function (response) {
